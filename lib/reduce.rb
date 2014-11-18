@@ -1,7 +1,7 @@
 class Array
   def my_inject (sum=nil, &block)
     return sum if self.empty? 
-    return self.first if sum.nil? && self.size == 1
-    self.drop(1).my_inject(block.call(sum ||= 0, self.first),&block) 
+    new_sum = sum ?  block.call(sum , self.first) : first
+    self.drop(1).my_inject(new_sum ,&block) 
   end
 end
